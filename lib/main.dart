@@ -41,6 +41,12 @@ class MyHomePage extends StatelessWidget {
           Text('A random username ides: '),
           Text(appState.current.asSnakeCase),
 
+          ElevatedButton(
+            onPressed: (){
+              print('button pressed!');
+            }, 
+            child: Text('Next')
+          ),
         ],
       ),
     );
