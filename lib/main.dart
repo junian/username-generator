@@ -62,7 +62,7 @@ class _MyHomePageState extends State<MyHomePage> {
       page = GeneratorPage();
     } else if (selectedIndex == 1)
       // ignore: curly_braces_in_flow_control_structures
-      page = Placeholder();
+      page = FavoritesPage();
     else {
       throw UnimplementedError('no Widget for $selectedIndex');
     }
@@ -144,6 +144,33 @@ class GeneratorPage extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class FavoritesPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    var appState = context.watch<MyAppState>();
+
+    if(appState.favorites.isEmpty) {
+      return Center(
+        child: Text('No favorites'),
+      );
+    }
+
+    return ListView(
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Text('You have ${appState.favorites.length} favorites'),
+        ),
+        for(var pair in appState.favorites)
+          ListTile(
+            leading: Icon(Icons.favorite),
+            title: Text(pair.asLowerCase),
+          ),
+      ],
     );
   }
 }
