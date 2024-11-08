@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:username_generator/app_states/main_app_state.dart';
+import 'package:username_generator/states/main_state.dart';
 
 class FavoritesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    var appState = context.watch<MyAppState>();
+    var appState = context.watch<MainState>();
 
     if(appState.favorites.isEmpty) {
       return Center(
